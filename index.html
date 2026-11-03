@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="霓虹風格的打磚塊網頁遊戲，收集道具、挑戰層層關卡並刷新最高分。" />
+  <title>NEON BREAKER — 霓虹打磚塊</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Neon Breaker 首頁">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>NEON <b>BREAKER</b></span>
+      </a>
+      <div class="top-actions">
+        <button class="icon-button" id="soundButton" aria-label="切換音效" title="切換音效">
+          <span id="soundIcon">◖))</span>
+        </button>
+        <button class="help-button" id="helpButton"><span>?</span> 遊戲說明</button>
+      </div>
+    </header>
+
+    <section class="game-layout">
+      <aside class="side-panel left-panel">
+        <div class="stat-block">
+          <span class="eyebrow">當前關卡</span>
+          <strong id="levelDisplay">01</strong>
+          <div class="level-meter"><span id="levelMeter"></span></div>
+        </div>
+        <div class="stat-block compact">
+          <span class="eyebrow">本局分數</span>
+          <strong id="scoreDisplay">000</strong>
+        </div>
+        <div class="stat-block compact best">
+          <span class="eyebrow">最高紀錄</span>
+          <strong id="bestDisplay">000</strong>
+          <small>儲存於此裝置</small>
+        </div>
+        <div class="lives-block">
+          <span class="eyebrow">剩餘生命</span>
+          <div id="livesDisplay" class="lives" aria-label="3 條生命"></div>
+        </div>
+      </aside>
+
+      <section class="game-stage" aria-label="遊戲區域">
+        <div class="stage-frame">
+          <canvas id="gameCanvas" width="960" height="640"></canvas>
+          <div class="scanlines" aria-hidden="true"></div>
+          <div class="stage-overlay visible" id="startOverlay">
+            <div class="overlay-card">
+              <span class="mini-label">ARCADE PROTOCOL</span>
+              <h1>擊碎光牆</h1>
+              <p>移動能量板、接住每一顆球。<br>清除所有磚塊，突破下一層。</p>
+              <button class="primary-button" id="startButton">開始遊戲 <span>→</span></button>
+              <small>按下 <kbd>SPACE</kbd> 也能開始</small>
+            </div>
+          </div>
+          <div class="stage-message" id="stageMessage" aria-live="polite"></div>
+        </div>
+        <div class="control-strip">
+          <div><kbd>←</kbd><kbd>→</kbd><span>移動擋板</span></div>
+          <div><kbd>SPACE</kbd><span>發射 / 暫停</span></div>
+          <div class="mouse-hint"><span class="mouse-icon">⌁</span><span>滑鼠 / 觸控皆可</span></div>
+        </div>
+      </section>
+
+      <aside class="side-panel right-panel">
+        <div class="panel-heading">
+          <span class="pulse-dot"></span>
+          <h2>道具資料庫</h2>
+        </div>
+        <p class="panel-intro">擊破發光磚塊，有機會取得強化。</p>
+        <div class="power-list">
+          <div class="power-item cyan">
+            <span class="power-icon">+1</span>
+            <div><b>分裂核心</b><small>額外增加一顆球</small></div>
+          </div>
+          <div class="power-item violet">
+            <span class="power-icon">↔</span>
+            <div><b>磁場擴張</b><small>暫時加寬擋板</small></div>
+          </div>
+          <div class="power-item orange">
+            <span class="power-icon">»</span>
+            <div><b>超頻脈衝</b><small>提高球體速度</small></div>
+          </div>
+          <div class="power-item green">
+            <span class="power-icon">⌁</span>
+            <div><b>時間緩速</b><small>降低球體速度</small></div>
+          </div>
+        </div>
+        <div class="difficulty-note">
+          <span>系統警告</span>
+          <p>每層光牆將更堅固，排列也會持續變化。</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <dialog id="helpDialog">
+    <button class="dialog-close" id="closeHelp" aria-label="關閉">×</button>
+    <span class="mini-label">OPERATOR MANUAL</span>
+    <h2>遊戲說明</h2>
+    <ul>
+      <li>用方向鍵、滑鼠或觸控移動擋板。</li>
+      <li>按空白鍵發射球；遊戲中按空白鍵可暫停。</li>
+      <li>清除全部磚塊即可過關，分數增加 1。</li>
+      <li>顯示裂紋或數字的磚塊需要撞擊多次。</li>
+      <li>接住落下的道具可獲得不同強化效果。</li>
+    </ul>
+  </dialog>
+
+  <script src="game.js"></script>
+</body>
+</html>
