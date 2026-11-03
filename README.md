@@ -2,6 +2,12 @@
 
 一款使用 HTML5 Canvas 製作的霓虹風格打磚塊網頁遊戲。玩家需要控制能量擋板接住球體、擊碎所有磚塊，收集隨機掉落的強化道具，並挑戰難度逐漸提升的關卡。
 
+## 線上遊玩
+
+不需下載或安裝，直接開啟：
+
+**[立即遊玩 NEON BREAKER](https://joeysssss.github.io/neon-breaker/)**
+
 ## 遊戲特色
 
 - 純 HTML、CSS、JavaScript 製作，不需要安裝額外套件
